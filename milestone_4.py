@@ -22,35 +22,33 @@ class Hangman:
 
         self.list_of_guesses = []
 
-    #Method (method is a function within a class)
+    #Method 
 
 
     def check_guess(guess):
+        ''' check_guess methos is used to see the guess (one letter) matches with any letters in the word'''
         lowercase = guess.lower()
 
         for letter in self.word:
 
             if letter == guess:
                 print(f"Good guess! {guess} is in the word.")
-                
-                #n the if block, replace the corresponding "_" in the word_guessed with the guess. 
-                # HINT: You can index the word_guessed at the position of the letter 
-                # and assign it to the letter
 
-                x = self.word.index(guess) #show number
-                word_guessed[x] = guess
+                letter_position = self.word.index(guess)
+                self.word_guessed[letter_position] = guess
                 
 
 
             else:
                 num_lives -= 1
                 print(f"Sorry, {guess} is not in the word. Try again.")
-                print(f""You have {num_lives} lives left.")
+                print(f"You have {num_lives} lives left.")
 
         num_letters += 1
 
 
     def ask_for_input(guess):
+        '''this methods checks the validity of the input of the player. The guess has to be one letter'''
         while True:
             if guess.isalpha() != True or len(guess) != 1:
                 print("Invalid letter. Please, enter a single alphabetical character.")
